@@ -4,26 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Bootstrap 5.2.1 -->
-    <!-- CSS only -->
+    <title>SC Coin</title>
+    <!-- Bootstrap 5.2.2 -->
+    <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <title>SC Coin</title>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Chart.JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+    <!-- Currencies JSON Data  -->
+    <script src="js/currencies.json"></script>
+
+    <!-- Home JS Script -->
+    <script src="js/main.js" defer></script>
   </head>
+
   <body>
     <!-- Navbar -->
-
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">SC Coin</a>
+        <a class="navbar-brand text-dark">SC Coin</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,320 +50,234 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link active text-dark border-bottom"
                 aria-current="page"
-                href="new_main.html"
+                href="index.html"
                 >Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="compare.html">Compare</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link text-dark" href="contact.html">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- / Navbar -->
-    <br />
-    <!-- Section 1 -->
-    <div class="container">
-      <h3>Current BitCoin Prices (USD)</h3>
-      <div id="currPriceList">
-        <ol class="list-group list-group-flush">
-          <li
-            id="currPriceList_USD"
-            class="list-group-item d-flex justify-content-between align-items-start"
-          >
-            <div id="USD_div" class="ms-2 me-auto"></div>
-            <span id="USD_span" class="badge bg-success rounded-pill"></span>
-          </li>
+    <!-- Main -->
+    <section class="container mt-5">
+      <!-- Section 1 -->
+      <div class="row">
+        <!-- Price Chart -->
+        <div class="col-md-8">
+          <h3>BitCoin Price History</h3>
+          <form class="row g-0 input-group mt-3 mb-1">
+            <div class="input-group mb-1">
+              <label for="startDate" class="col-auto input-group-text"
+                >Start</label
+              >
+              <input
+                id="startDate"
+                type="date"
+                class="col form-control text-center"
+                min="2010-07-17"
+                max="2022-07-10"
+                label="input start date"
+              />
 
-          <li
-            id="currPriceList_EUR"
-            class="list-group-item d-flex justify-content-between align-items-start"
-          >
-            <div id="EUR_div" class="ms-2 me-auto"></div>
-            <span id="EUR_span" class="badge bg-success rounded-pill"></span>
-          </li>
-          <li
-            id="currPriceList_JPY"
-            class="list-group-item d-flex justify-content-between align-items-start"
-          >
-            <div id="JPY_div" class="ms-2 me-auto"></div>
-            <span id="JPY_span" class="badge bg-success rounded-pill"></span>
-          </li>
-          <li
-            id="currPriceList_GBP"
-            class="list-group-item d-flex justify-content-between align-items-start"
-          >
-            <div id="GBP_div" class="ms-2 me-auto"></div>
-            <span id="GBP_span" class="badge bg-success rounded-pill"></span>
-          </li>
-          <li
-            id="currPriceList_AUD"
-            class="list-group-item d-flex justify-content-between align-items-start"
-          >
-            <div id="AUD_div" class="ms-2 me-auto"></div>
-            <span id="AUD_span" class="badge bg-success rounded-pill"></span>
-          </li>
-          <button
-            class="btn btn-primary"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          >
-            Extended BitCoin currencies
-          </button>
-          <div
-            class="collapse list-group list-group-flush"
-            id="collapseExample"
-          >
-            <li
-              id="currPriceList_CAD"
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div id="CAD_div" class="ms-2 me-auto"></div>
-              <span id="CAD_span" class="badge bg-success rounded-pill"></span>
-            </li>
-            <li
-              id="currPriceList_CHF"
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div id="CHF_div" class="ms-2 me-auto"></div>
-              <span id="CHF_span" class="badge bg-success rounded-pill"></span>
-            </li>
-            <li
-              id="currPriceList_CNY"
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div id="CNY_div" class="ms-2 me-auto"></div>
-              <span id="CNY_span" class="badge bg-success rounded-pill"></span>
-            </li>
-            <li
-              id="currPriceList_HKD"
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div id="HKD_div" class="ms-2 me-auto"></div>
-              <span id="HKD_span" class="badge bg-success rounded-pill"></span>
-            </li>
-            <li
-              id="currPriceList_NZD"
-              class="list-group-item d-flex justify-content-between align-items-start"
-            >
-              <div id="NZD_div" class="ms-2 me-auto"></div>
-              <span id="NZD_span" class="badge bg-success rounded-pill"></span>
-            </li>
+              <label for="endDate" class="col-auto input-group-text">End</label>
+              <input
+                id="endDate"
+                type="date"
+                class="col form-control text-center"
+                min="2010-07-17"
+                max="2022-07-10"
+              />
+
+              <button
+                id="dateSearch"
+                class="col-2 ms-auto offset btn btn-primary"
+                type="button"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+          <canvas id="history" width="400" height="300"></canvas>
+          <br />
+          <div class="row">
+            <div class="col-auto">
+              <p class="fs-6 fw-light fst-italic">
+                Note: API only displays data from 17/10/2010 to 10/07/2022
+              </p>
+            </div>
           </div>
-        </ol>
-      </div>
-    </div>
-    <!-- / Section 1 -->
-
-    <br />
-
-    <!-- Section 2 -->
-    <div id="sec2" class="container">
-      <h3>BitCoin Price History</h3>
-      <form class="row g-0 input-group mb-3">
-        <div class="row">
-          <span class="col-auto input-group-text">From</span>
-
-          <input
-            id="startDate"
-            type="date"
-            class="col form-control text-center"
-            min="2010-07-17"
-            max="2022-07-10"
-          />
-
-          <div class="col-1"></div>
-
-          <span class="col-auto input-group-text">To</span>
-
-          <input
-            id="endDate"
-            type="date"
-            class="col form-control text-center"
-            min="2010-07-17"
-            max="2022-07-10"
-          />
-
-          <div class="col-1"></div>
-
-          <button
-            id="dateSearch"
-            class="col-2 ms-auto offset btn btn-outline-primary"
-            type="button"
-          >
-            Search
-          </button>
         </div>
-      </form>
 
-      <br />
+        <!-- Top Currencies -->
+        <div class="col-md-4">
+          <h3>Current BitCoin Prices</h3>
+          <div id="currPriceList">
+            <ol class="list-group list-group-flush">
+              <li
+                id="currPriceList_USD"
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
+                <div id="USD_div" class="ms-2 me-auto"></div>
+                <span
+                  id="USD_span"
+                  class="badge bg-success rounded-pill"
+                ></span>
+              </li>
 
-      <canvas id="history" width="400" height="200"></canvas>
-    </div>
-    <!-- / Section 2 -->
-
-    <br />
-
-    <!-- Section 3 -->
-
-    <!-- World Currencies List Control -->
-    <div class="container">
-      <h3>List of currencies</h3>
-      <div class="row">
-        <div class="col input-group">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >Search by</label
-          >
-          <select class="form-select" id="inputGroupSelect01">
-            <option selected value="1">Code</option>
-            <option value="2">Currency Name</option>
-          </select>
-          <input
-            type="search"
-            id="form1"
-            class="form-control"
-            placeholder="..."
-          />
-          <button class="btn btn-outline-primary" type="button">Search</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-8">
-          <!-- Searched Item
-          <div></div>
-          <button class="btn btn-success" type="button">Pin</button> -->
-        </div>
-      </div>
-
-      <br />
-      <div class="row justify-content-center">
-        <div
-          class="col-auto btn-group"
-          role="group"
-          aria-label="Basic radio toggle button group"
-        >
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio0"
-            autocomplete="off"
-          />
-          <label class="btn active btn-outline-primary" for="btnradio0"
-            >5</label
-          >
-
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio1"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-primary" for="btnradio1">10</label>
-
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio2"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-primary" for="btnradio2">25</label>
-
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio3"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-primary" for="btnradio3">50</label>
-
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio4"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-primary" for="btnradio4">75</label>
-
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio5"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-primary" for="btnradio5">100</label>
-
-          <input
-            type="radio"
-            class="btn-check"
-            name="btnradio"
-            id="btnradio6"
-            autocomplete="off"
-          />
-          <label class="btn btn-outline-secondary" for="btnradio6">ALL</label>
+              <li
+                id="currPriceList_EUR"
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
+                <div id="EUR_div" class="ms-2 me-auto"></div>
+                <span
+                  id="EUR_span"
+                  class="badge bg-success rounded-pill"
+                ></span>
+              </li>
+              <li
+                id="currPriceList_JPY"
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
+                <div id="JPY_div" class="ms-2 me-auto"></div>
+                <span
+                  id="JPY_span"
+                  class="badge bg-success rounded-pill"
+                ></span>
+              </li>
+              <li
+                id="currPriceList_GBP"
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
+                <div id="GBP_div" class="ms-2 me-auto"></div>
+                <span
+                  id="GBP_span"
+                  class="badge bg-success rounded-pill"
+                ></span>
+              </li>
+              <li
+                id="currPriceList_AUD"
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
+                <div id="AUD_div" class="ms-2 me-auto"></div>
+                <span
+                  id="AUD_span"
+                  class="badge bg-success rounded-pill"
+                ></span>
+              </li>
+              <!-- Collapse Button -->
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                More Currencies
+              </button>
+              <div
+                class="collapse list-group list-group-flush"
+                id="collapseExample"
+              >
+                <li
+                  id="currPriceList_CAD"
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div id="CAD_div" class="ms-2 me-auto"></div>
+                  <span
+                    id="CAD_span"
+                    class="badge bg-success rounded-pill"
+                  ></span>
+                </li>
+                <li
+                  id="currPriceList_CHF"
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div id="CHF_div" class="ms-2 me-auto"></div>
+                  <span
+                    id="CHF_span"
+                    class="badge bg-success rounded-pill"
+                  ></span>
+                </li>
+                <li
+                  id="currPriceList_CNY"
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div id="CNY_div" class="ms-2 me-auto"></div>
+                  <span
+                    id="CNY_span"
+                    class="badge bg-success rounded-pill"
+                  ></span>
+                </li>
+                <li
+                  id="currPriceList_HKD"
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div id="HKD_div" class="ms-2 me-auto"></div>
+                  <span
+                    id="HKD_span"
+                    class="badge bg-success rounded-pill"
+                  ></span>
+                </li>
+                <li
+                  id="currPriceList_NZD"
+                  class="list-group-item d-flex justify-content-between align-items-start"
+                >
+                  <div id="NZD_div" class="ms-2 me-auto"></div>
+                  <span
+                    id="NZD_span"
+                    class="badge bg-success rounded-pill"
+                  ></span>
+                </li>
+              </div>
+            </ol>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- / World Currencies List Control -->
 
-    <br />
+      <!-- Section 2  -->
+      <div class="row pt-3">
+        <h4 class="mb-3">World Currency BPI</h4>
 
-    <!-- $ World Currencies Table -->
-    <div class="container text-center">
-      <table class="table table-striped">
-        <thead>
-          <tr class="table-info">
-            <th scope="col-auto">Code</th>
-            <th scope="col-auto">Currency Name</th>
-            <th scope="col-auto">BPI (USD)</th>
-          </tr>
-        </thead>
-        <tbody id="body_worldCurrencies">
-          <tr id="pinned_worldCurrencies" class="table-warning">
-            <th id="pin_WC_currency" scope="pin_WC_row"></th>
-            <td id="pin_WC_country"></td>
-            <td id="bpi"></td>
-          </tr>
-          <tr id="row_0">
-            <th id="WC_currency"></th>
-            <td id="WC_country"></td>
-            <td id="WC_bpi"></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- /World Currencies Table -->
-    </div>
-    <!-- / $ World Currencies Table -->
+        <div class="row mb-3">
+          <div class="form-group">
+            <div class="row">
+              <label for="search" class="col-auto input-group-text"
+                >Search</label
+              >
+              <input
+                id="search"
+                type="text"
+                class="col form-control lg"
+                placeholder="Enter currency code or name.."
+              />
+            </div>
 
-    <!-- / Section 3 -->
+            <div class="md-5" id="match-list"></div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <h5>Pinned Currencies</h5>
+          <div id="pinList"></div>
+        </div>
+      </div>
+    </section>
 
-    <br />
-
-    <!-- $ Footer -->
-    <div class="card">
-      <div class="card-header">
+    <!-- Footer -->
+    <footer class="footer mt-5 p-2 border bg-light">
+      <div class="text-dark">
         <!-- MUST BE INCLUDED as per request of API owner  -->
-        Powered by <a href="https://old.coindesk.com/price/bitcoin">CoinDesk</a>
+        Powered by
+        <a class="text-dark" href="https://old.coindesk.com/price/bitcoin"
+          >CoinDesk</a
+        >
       </div>
-    </div>
-    <!-- / Footer -->
-    <script src="js/currencies.json"></script>
-    <script src="js/new_main.js"></script>
+    </footer>
   </body>
 </html>

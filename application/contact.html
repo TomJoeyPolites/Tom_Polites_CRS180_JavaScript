@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <title>SC Coin - Compare</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand text-dark">SC Coin</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link text-dark"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-dark border-bottom"
+                href="contact.html"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- / Navbar -->
+
+    <!-- Main -->
+    <section class="container mt-5">
+      <div class="row">
+        <h3>Contact Us</h3>
+      </div>
+      <div class="row">
+        <p class="fs-5 fst-italic">
+          If you would like more information please complete the form below
+        </p>
+      </div>
+      <div class="row">
+        <form>
+          <div class="mb-3">
+            <label for="inputName" class="form-label">Preferred Name</label>
+            <input type="text" class="form-control" id="inputName" />
+          </div>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn">Submit</button>
+        </form>
+      </div>
+    </section>
+    <!-- / Main -->
+
+    <!-- Footer -->
+    <footer class="footer mt-5 p-2 border bg-light">
+      <div class="text-dark">
+        <!-- MUST BE INCLUDED as per request of API owner  -->
+        Powered by
+        <a class="text-dark" href="https://old.coindesk.com/price/bitcoin"
+          >CoinDesk</a
+        >
+      </div>
+    </footer>
+    <!-- / Footer -->
+  </body>
+  <!-- Contact JS Script -->
+  <script src="js/contact.js"></script>
+</html>
